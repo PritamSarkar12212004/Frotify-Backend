@@ -31,6 +31,7 @@ const createExpesne = async (req, res) => {
       };
       data();
     }
+    res.send(dbResponse)
   });
 };
 export default createExpesne;
