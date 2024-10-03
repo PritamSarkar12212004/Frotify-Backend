@@ -1,4 +1,4 @@
-import 'dotenv/config';
+
 import express from "express";
 import database from "./src/database/mongoDb.js";
 import adminRote from "./src/routes/admin/adminRote.js";
@@ -28,5 +28,5 @@ app.use("/expense", expenseRoute);
 app.use("/money", moneyAddrerRoute);
 app.use("/history", historyRoute);
 
-const port = process.env.PORT;
+const port = 3000;
 app.listen(port, () => console.log(`Server running on port ${port}`));
