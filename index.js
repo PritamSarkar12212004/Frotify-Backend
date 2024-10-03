@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import express from "express";
 import database from "./src/database/mongoDb.js";
 import adminRote from "./src/routes/admin/adminRote.js";
@@ -13,7 +14,7 @@ database();
 
 app.use(
   cors({
-    origin: "*",
+    origin: "https://frotify.vercel.app",
     credentials: true,
   })
 );
@@ -27,5 +28,5 @@ app.use("/expense", expenseRoute);
 app.use("/money", moneyAddrerRoute);
 app.use("/history", historyRoute);
 
-const port = 3000;
+const port = process.env.PORT;
 app.listen(port, () => console.log(`Server running on port ${port}`));
