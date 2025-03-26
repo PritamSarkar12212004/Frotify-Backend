@@ -1,12 +1,12 @@
-
+import cors from "cors";
 import express from "express";
 import database from "./src/database/mongoDb.js";
 import adminRote from "./src/routes/admin/adminRote.js";
 import profile from "./src/routes/admin/profile.js";
-import expenseRoute from './src/routes/expenses/expenseRoute.js'
-import moneyAddrerRoute from './src/routes/money/moneyAddrerRoute.js'
-import historyRoute from './src/routes/history/historyRoute.js'
-import cors from "cors";
+import expenseRoute from "./src/routes/expenses/expenseRoute.js";
+import moneyAddrerRoute from "./src/routes/money/moneyAddrerRoute.js";
+import historyRoute from "./src/routes/history/historyRoute.js";
+import morgan from "morgan";
 
 // Import routes
 const app = express();
@@ -14,10 +14,12 @@ database();
 
 app.use(
   cors({
-    origin: "https://frotify.vercel.app",
+    origin: "*",
     credentials: true,
   })
 );
+
+app.use(morgan("dev"));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
